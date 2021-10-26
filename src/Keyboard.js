@@ -198,6 +198,9 @@ export default class Keyboard extends Lightning.Component {
             const call = `on${split[0]}`;
             const eventFunction = this[call];
             event.key = split[1];
+            if(call === 'onLayout'){
+                this.signal('onBeforeLayout', event);
+            }
             if(eventFunction && eventFunction.apply && eventFunction.call) {
                 eventFunction.call(this, event);
             }
