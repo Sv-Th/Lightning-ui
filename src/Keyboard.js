@@ -47,6 +47,7 @@ export default class Keyboard extends Lightning.Component {
     }
 
     _update() {
+        this.signal('onBeforeUpdate', this._config);
         const {layouts, buttonTypes = {}, styling = {}} = this._config;
         if(!this._layout || (this._layout && layouts[this._layout] === undefined)) {
             console.error(`Configured layout "${this._layout}" does not exist. Picking first available: "${Object.keys(layouts)[0]}"`);
