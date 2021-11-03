@@ -124,7 +124,7 @@ export default class Keyboard extends Lightning.Component {
             const currentPosition = rowPosition + (marginTop|| margin);
             rowPosition = currentPosition + rowHeight + (marginBottom || margin || verticalSpacing);
             return {
-                ref: `Row-${rowIndex + 1}`, 
+                ref: `Row-${rowIndex + 1}`,
                 x: rowOffset,
                 mountX: rowMount,
                 w: keyPosition,
@@ -217,7 +217,7 @@ export default class Keyboard extends Lightning.Component {
             return;
         }
         const eventData = {
-            previousInput: this._input, 
+            previousInput: this._input,
             input: this._input = input
         };
         if(this._inputField && this._inputField.onInputChanged) {
@@ -259,7 +259,7 @@ export default class Keyboard extends Lightning.Component {
     clear() {
         this._changeInput('');
     }
-    
+
     layout(key) {
         if(key === this._layout) {
             return;
@@ -289,7 +289,7 @@ export default class Keyboard extends Lightning.Component {
             this._previous = null;
             return this._columnIndex = targetIndex;
         }
-        if(direction === 'column' && targetIndex > -1 && targetIndex < this.rows.length ) {    
+        if(direction === 'column' && targetIndex > -1 && targetIndex < this.rows.length ) {
             const currentRowIndex = this._rowIndex;
             const currentColumnIndex = this._columnIndex;
             if(this._previous && this._previous.row === targetIndex) {
