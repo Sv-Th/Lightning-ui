@@ -34,6 +34,7 @@ export default class Keyboard extends Lightning.Component {
         this._inputField = undefined;
         this._maxCharacters = 56;
         this.navigationWrapAround = false;
+        this.backSpaceRemovesLetters = true;
         this.resetFocus();
     }
 
@@ -157,7 +158,7 @@ export default class Keyboard extends Lightning.Component {
     }
 
     _handleKey({key, code = 'CustomKey'}) {
-        if(code === 'Backspace' && this._input.length === 0) {
+        if(code === 'Backspace' && (this._input.length === 0 || !this.backSpaceRemovesLetters)) {
             return false;
         }
         if(key === ' ') {
