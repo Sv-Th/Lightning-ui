@@ -336,8 +336,14 @@ export default class Keyboard extends Lightning.Component {
                     this._columnIndex = t;
                 } // if no next row found and wraparound is on, loop back to first row
                 else if(this.navigationWrapAround){
-                    this._columnIndex = Math.min(this.rows[0].children.length-1, this._columnIndex)
-                    return this._rowIndex = 0;
+                    if (this._rowIndex === this.rows.length - 1) {
+                        this._columnIndex = Math.min(this.rows[0].children.length - 1, this._columnIndex)
+                        return this._rowIndex = 0;
+                    }
+                    else {
+                        this._columnIndex = Math.min(this.rows[this._rowIndex+1].children.length - 1, this._columnIndex)
+                        return this._rowIndex = this._rowIndex+1;
+                    }
                 }
             }
             if(this._rowIndex !== currentRowIndex) {
