@@ -93,6 +93,10 @@ export default class InputField extends Lightning.Component {
         else if(this._autoHideCursor){
             this.toggleCursor(false);
         }
+        
+        if(!hasInput) {
+            this.cursor.x = this._cursorX;
+        }
 
         this.patch({
             PreLabel: {text: {text: pre}},
